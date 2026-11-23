@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrik Verification Dashboard</title>
+  <link rel="stylesheet" href="mula.css">
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">SUBMISSION MONITORING</p>
+        <h1>Matrik Verification Dashboard</h1>
+        <p class="subtitle">One row per Matrik number, with all submission attempts grouped together.</p>
+      </div>
+      <button id="refreshBtn" class="btn btn-primary">↻ Refresh</button>
+      <button
+  type="button"
+  class="view-btn"
+  onclick="openMealSelection()"
+>
+  View Meal Selection
+</button>
+    </header>
+
+    <section class="stats-grid" aria-label="Summary statistics">
+      <article class="stat-card"><span>Total submissions</span><strong id="totalCount">0</strong></article>
+      <article class="stat-card"><span>Unique Matrik numbers</span><strong id="matrikCount">0</strong></article>
+      <article class="stat-card"><span>Matched Matrik numbers</span><strong id="matchedCount">0</strong></article>
+      <article class="stat-card"><span>Completed submissions</span><strong id="completedCount">0</strong></article>
+      <article class="stat-card"><span>Verified submissions</span><strong id="verifiedCount">0</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div>
+          <h2>Qualified Matrik records</h2>
+          <p class="hint">Included when at least one submission has Stage = COMPLETED OR Status = VERIFIED.</p>
+        </div>
+        <input id="searchInput" type="search" placeholder="Search Matrik, UUID, invoice, phone...">
+      </div>
+
+      <div id="loading" class="notice">Loading submissions...</div>
+      <div id="error" class="notice error hidden"></div>
+      <div id="resultInfo" class="result-info"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Latest timestamp</th>
+              <th>Matrik number</th>
+              <th>UUID</th>
+              <th>Invoice number</th>
+              <th>Submissions</th>
+              <th>Stage summary</th>
+              <th>Status summary</th>
+              <th>Latest message</th>
+              <th>Phone</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="submissionTable"></tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="empty-state hidden">No Matrik records match the current search.</div>
+    </section>
+
+    <section id="groupDetail" class="panel detail-panel hidden">
+      <div class="detail-heading">
+        <div>
+          <p class="eyebrow">SUBMISSION HISTORY</p>
+          <h2 id="detailMatrik">Matrik details</h2>
+          <p id="detailCount" class="hint"></p>
+        </div>
+        <button id="closeDetailBtn" class="btn btn-light">Close</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Timestamp</th><th>Original Matrik</th><th>UUID</th><th>Invoice</th><th>Stage</th><th>Status</th><th>Message</th><th>Phone</th></tr>
+          </thead>
+          <tbody id="groupDetailTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

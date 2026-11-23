@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meal Selection Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Dapo Minda · Administration</p>
+        <h1>Meal Selection</h1>
+        <p class="subtitle">Weekly meal selections matched with verified submissions.</p>
+      </div>
+      <button id="refreshBtn" class="refresh-btn" type="button">
+        <span aria-hidden="true">↻</span> Refresh data
+      </button>
+    </header>
+
+    <section class="stats" aria-label="Summary">
+      <article class="stat-card">
+        <span class="stat-label">Matched students</span>
+        <strong id="studentCount">—</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Matched records</span>
+        <strong id="recordCount">—</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Selected meals</span>
+        <strong id="mealCount">—</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div>
+          <h2>Weekly meal records</h2>
+          <p id="resultInfo" class="muted">Preparing data…</p>
+        </div>
+        <label class="search-wrap">
+          <span class="sr-only">Search</span>
+          <input id="searchInput" type="search" placeholder="Search UUID or Matrik Number…" autocomplete="off" />
+        </label>
+      </div>
+
+      <div id="statusMessage" class="status-message" role="status">Loading meal selections…</div>
+
+      
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Matrik Number</th>
+        <th colspan="3">Isnin</th>
+        <th colspan="3">Selasa</th>
+        <th colspan="3">Rabu</th>
+        <th colspan="3">Khamis</th>
+        <th colspan="3">Jumaat</th>
+        <th colspan="3">Sabtu</th>
+        <th colspan="3">Ahad</th>
+      </tr>
+      <tr>
+        <th>Pagi</th>
+        <th>Tengahari</th>
+        <th>Petang</th>
+
+        <th>Pagi</th>
+        <th>Tengahari</th>
+        <th>Petang</th>
+
+        <th>Pagi</th>
+        <th>Tengahari</th>
+        <th>Petang</th>
+
+        <th>Pagi</th>
+        <th>Tengahari</th>
+        <th>Petang</th>
+
+        <th>Pagi</th>
+        <th>Tengahari</th>
+        <th>Petang</th>
+
+        <th>Pagi</th>
+        <th>Tengahari</th>
+        <th>Petang</th>
+
+        <th>Pagi</th>
+        <th>Tengahari</th>
+        <th>Petang</th>
+      </tr>
+    </thead>
+    <tbody id="mealTable"></tbody>
+  </table>
+</div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <strong>No matching meal records</strong>
+        <p>Records appear here only when their UUID exists in the submissions app.</p>
+      </div>
+    </section>
+
+
+<div class="summary-section">
+  <h3>Ringkasan Jumlah Makanan</h3>
+
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Jenis Makanan</th>
+          <th>Isnin</th>
+          <th>Selasa</th>
+          <th>Rabu</th>
+          <th>Khamis</th>
+          <th>Jumaat</th>
+          <th>Sabtu</th>
+          <th>Ahad</th>
+          <th>Jumlah</th>
+        </tr>
+      </thead>
+
+      <tbody id="mealSummaryTable"></tbody>
+    </table>
+  </div>
+</div>
+
+    <footer>Meal Selection Dashboard · Data retrieved from Google Sheets</footer>
+  </main>
+
+  <!-- Load your existing app.js BEFORE meal-dashboard.js when both run on the same page. -->
+  <script src="meal-dashboard.js"></script>
+</body>
+</html>
